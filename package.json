@@ -1,0 +1,14 @@
+{
+  "name": "fxos-customizer-launcher",
+  "description": "Launcher App for Customizer",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:fxos/customizer-launcher.git"
+  },
+  "license": "MPL",
+  "dependencies": {
+    "fxos-build": "0.3.x",
+    "gulp": "3.8.x"
+  }
+}

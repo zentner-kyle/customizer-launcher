@@ -1,0 +1,16 @@
+{
+  "name": "fxos-customizer-launcher",
+  "description": "Launcher App for Customizer",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "app/componenets"
+  ],
+  "dependencies": {
+    "fxos-mvc": "fxos/mvc",
+    "gaia-theme": "gaia-components/gaia-theme#0.4.5",
+    "gaia-header" : "gaia-components/gaia-header#0.8.1",
+    "gaia-list": "gaia-components/gaia-list#0.1.7",
+    "gaia-fonts": "gaia-components/gaia-fonts#0.2.1"
+  }
+}
