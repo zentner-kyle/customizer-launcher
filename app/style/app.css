@@ -45,3 +45,15 @@ gaia-header {
 .app-list li i {
   text-align: right;
 }
+
+.app-list .open-button {
+  font-size: 12px !important;
+  font-weight: bold !important;
+  height: 32px !important;
+  min-width: 40px !important;
+  -moz-user-select: none;
+  --button-background: var(--color-blue);
+  --button-color: white;
+  --button-background-active: white;
+  --button-color-active: var(--title-color);
+}

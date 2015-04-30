@@ -1,21 +1,18 @@
-import { RoutingController } from 'components/fxos-mvc/dist/mvc';
+import { Controller } from 'components/fxos-mvc/dist/mvc';
 import 'gaia-component';
 import MainView from 'js/view/main_view';
 import ListController from 'js/controller/list_controller';
 
-export default class MainController extends RoutingController {
+export default class MainController extends Controller {
 
 	constructor() {
 		this.view = new MainView({ el: document.body });
 		this.listController = new ListController();
-		super({
-			apps: this.listController
-		});
+		super();
 	}
 
 	main() {
 	   this.view.render();
-	   window.location.hash = '#apps';
-	   document.body.classList.remove('loading');
+	   this.listController.main();
 	}
 }

@@ -4,7 +4,7 @@ import { AppsHelper } from 'js/lib/helpers';
 
 export default class ListModel extends Model {
   filterApps(apps) {
-    var excludedApps = ['Keyboard', 'Settings'];
+    var excludedApps = ['Built-in Keyboard', 'Settings'];
 
     return apps.filter(app =>
       app.manifest.role !== 'addon' &&

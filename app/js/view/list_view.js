@@ -1,5 +1,6 @@
 import { View } from 'components/fxos-mvc/dist/mvc';
 import 'components/gaia-list/gaia-list';
+import 'components/gaia-button/gaia-button';
 import { IconHelper } from 'js/lib/helpers';
 
 function capitalize(string) {
@@ -40,7 +41,7 @@ export default class ListView extends View {
         <p class="name">${capitalize(name)}</p>
         <p class="author">${author}</p>
       </div>
-      <i class="launch-app" data-icon="forward-light"></i>`;
+      <gaia-button class="open-button">Open</gaia-button>`;
     return string;
   }
 
