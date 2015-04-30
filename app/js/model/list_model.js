@@ -1,6 +1,5 @@
 import { Model } from 'components/fxos-mvc/dist/mvc';
-import { AppsHelper } from 'js/lib/helpers';
-
+import { AppsHelper, IconHelper } from 'js/lib/helpers';
 
 export default class ListModel extends Model {
   filterApps(apps) {
@@ -19,7 +18,7 @@ export default class ListModel extends Model {
     detail.description = app.manifest.description;
     detail.type = app.manifest.role;
     detail.url = '';
-    detail.icon = '';
+    detail.icon = IconHelper.getIconURL(app, app.manifest.icons);
     detail.author = app.manifest.developer ? app.manifest.developer.name : '';
     return detail;
   }

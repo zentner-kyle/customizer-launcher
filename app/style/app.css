@@ -23,13 +23,15 @@ gaia-header {
 .app-list .icon {
   max-height: 100%;
   float: left;
-  margin-right: 13px;
+  margin-right: 10px;
+  width: 15%;
 }
 
 .app-list .name {
   margin: 0;
   font-size: 19px !important;
   color: var(--text-color);
+  width: 65%;
 }
 
 .author {
@@ -38,15 +40,12 @@ gaia-header {
   color: var(--title-color);
 }
 
-.app-list .app {
-  height: 70px;
-}
-
 .app-list li i {
   text-align: right;
 }
 
 .app-list .open-button {
+  width: 20%;
   font-size: 12px !important;
   font-weight: bold !important;
   height: 32px !important;
