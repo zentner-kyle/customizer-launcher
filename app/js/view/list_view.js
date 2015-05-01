@@ -24,12 +24,23 @@ export default class ListView extends View {
     }
   }
 
+  setOpenHandler(handler) {
+    if (!this.openHandler) {
+      this.openHandler = handler;
+    }
+  }
+
   addElement(data) {
     var item = document.createElement('li');
     item.classList.add('app');
     item.innerHTML = this.listItemTemplate(data);
     IconHelper.setImage(item.querySelector('.icon'), data.icon);
     this.el.appendChild(item);
+
+    item.querySelector('.open-button').addEventListener('click',
+      function(data) {
+        this.openHandler(data);
+      }.bind(this, data));
 
     return item;
   }

@@ -19,7 +19,16 @@ export default class ListController extends Controller {
 
     this.model.getAppList().then(allApps => {
       this.listView.update(allApps);
+      this.listView.setOpenHandler(this.handleOpen.bind(this));
     });
+  }
+
+   handleOpen(data) {
+    if (data.app) {
+      data.app.launch();
+    } else {
+      throw new Error('Could not open app: ' + data);
+    }
   }
 
 }

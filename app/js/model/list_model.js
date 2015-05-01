@@ -8,6 +8,7 @@ export default class ListModel extends Model {
     return apps.filter(app =>
       app.manifest.role !== 'addon' &&
       app.manifest.role !== 'theme' &&
+      app.manifest.role !== 'system' &&
       excludedApps.indexOf(app.manifest.name) === -1);
   }
 
@@ -16,10 +17,9 @@ export default class ListModel extends Model {
     detail.manifestURL = app.manifestURL;
     detail.name = app.manifest.name;
     detail.description = app.manifest.description;
-    detail.type = app.manifest.role;
-    detail.url = '';
     detail.icon = IconHelper.getIconURL(app, app.manifest.icons);
     detail.author = app.manifest.developer ? app.manifest.developer.name : '';
+    detail.app = app;
     return detail;
   }
 
