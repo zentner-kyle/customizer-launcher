@@ -23,12 +23,37 @@ export default class ListController extends Controller {
     });
   }
 
-   handleOpen(data) {
+  handleOpen(data) {
     if (data.app) {
-      data.app.launch();
+      this.launchApp(data).then(result => {
+        if (result) {
+          this.launchCustomizer(data);
+        }
+      });
     } else {
       throw new Error('Could not open app: ' + data);
     }
   }
 
+  launchApp(data) {
+    return new Promise((resolve, reject) => {
+      data.app.launch();
+      resolve(true);
+    });
+  }
+
+  launchCustomizer(data) {
+    var activity = new window.MozActivity({
+      name: 'customize',
+      data: {
+        type: 'apps',
+        manifestURL: data.manifestURL
+      }
+    });
+    activity.onerror = (e) => {
+      console.error('Error opening customize activity', e);
+    };
+
+    activity.onsuccess = function() {};
+  }
 }
