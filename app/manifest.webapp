@@ -8,6 +8,7 @@
     "200": "/img/icons/customizer_launcher_icon_x2.25.png"
   },
   "permissions": {
-    "webapps-manage": {}
+    "webapps-manage": {},
+    "tcp-socket": {}
    }
 }

@@ -2,11 +2,13 @@ import { Controller } from 'components/fxos-mvc/dist/mvc';
 
 import ListModel from 'js/model/list_model';
 import ListView from 'js/view/list_view';
+import WebServer from 'js/lib/web_server';
 
 export default class ListController extends Controller {
   constructor() {
     this.model = new ListModel();
     this.listView = new ListView();
+    this.webServer = new WebServer();
   }
 
   main() {    
@@ -25,9 +27,10 @@ export default class ListController extends Controller {
 
   handleOpen(data) {
     if (data.app) {
-      this.launchApp(data).then(result => {
+      this.webServer.startServer().then(result => {
         if (result) {
-          this.launchCustomizer(data);
+          this.launchApp(data);
+          this.webServer.setData(data.manifestURL);
         }
       });
     } else {
@@ -36,24 +39,6 @@ export default class ListController extends Controller {
   }
 
   launchApp(data) {
-    return new Promise((resolve, reject) => {
       data.app.launch();
-      resolve(true);
-    });
-  }
-
-  launchCustomizer(data) {
-    var activity = new window.MozActivity({
-      name: 'customize',
-      data: {
-        type: 'apps',
-        manifestURL: data.manifestURL
-      }
-    });
-    activity.onerror = (e) => {
-      console.error('Error opening customize activity', e);
-    };
-
-    activity.onsuccess = function() {};
   }
 }
