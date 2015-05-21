@@ -6,6 +6,9 @@
     "type": "git",
     "url": "git@github.com:fxos/customizer-launcher.git"
   },
+  "scripts": {
+    "build": "gulp build"
+  },
   "license": "MPL",
   "dependencies": {
     "fxos-build": "0.3.x",
