@@ -1,5 +1,6 @@
 import { View } from 'components/fxos-mvc/dist/mvc';
 import 'components/gaia-header/dist/gaia-header';
+import 'js/element/fxos-dev-mode-dialog';
 
 export default class MainView extends View {
 
@@ -11,7 +12,8 @@ export default class MainView extends View {
     var string = `
       <gaia-header>
         <h1>Customizer Launcher</h1>
-      </gaia-header>`;
+      </gaia-header>
+      <fxos-dev-mode-dialog></fxos-dev-mode-dialog>`;
     return string;
   }
 }
