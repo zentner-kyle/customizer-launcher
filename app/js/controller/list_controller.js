@@ -11,16 +11,30 @@ export default class ListController extends Controller {
     this.webServer = new WebServer();
   }
 
-  main() {    
-    this.createList();
+  main() {
+    this.model.getAllApps().then((allApps) => {
+      this.enableCustomizerAddOn(allApps).then(() =>
+        this.createList(allApps));
+    });
   }
 
-  createList() {
+  enableCustomizerAddOn(allApps) {
+    return new Promise((resolve, reject) => {
+      this.model.getCustomizerAddOn(allApps).then((addon) => {
+        if (addon && !addon.enabled) {
+          navigator.mozApps.mgmt.setEnabled(addon, true);
+        }
+        resolve();
+      });
+    });
+  }
+
+  createList(allApps) {
     this.listView.render();
     document.body.appendChild(this.listView.el);
 
-    this.model.getAppList().then(allApps => {
-      this.listView.update(allApps);
+    this.model.getAppList(allApps).then((appsList) => {
+      this.listView.update(appsList);
       this.listView.setOpenHandler(this.handleOpen.bind(this));
     });
   }
