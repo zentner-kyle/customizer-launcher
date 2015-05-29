@@ -2,14 +2,39 @@ import { Model } from 'components/fxos-mvc/dist/mvc';
 import { AppsHelper, IconHelper } from 'js/lib/helpers';
 
 export default class ListModel extends Model {
+  getAllApps() {
+    return new Promise((resolve, reject) => {
+      AppsHelper.getAllApps().then(allApps => {
+        resolve(allApps);
+      });
+    });
+  }
+
+  filterCustomizerAddon(apps) {
+    return apps.filter(app =>
+      app.manifestURL == 'app://customizer.gaiamobile.org/manifest.webapp');
+  }
+
+  getCustomizerAddOn(allApps) {
+    return new Promise((resolve, reject) => {
+      var addOnList = this.filterCustomizerAddon(allApps);
+      if (addOnList && addOnList.length == 1) {
+        resolve(addOnList[0]);
+      } else {
+        reject(new Error('Cannot fetch customizer add on'));
+      }
+    });
+  }
+
   filterApps(apps) {
-    var excludedApps = ['Built-in Keyboard', 'Settings'];
+    var excludedApps = ['app://keyboard.gaiamobile.org/manifest.webapp',
+                        'app://customizer-launcher.gaiamobile.org/manifest.webapp'];
 
     return apps.filter(app =>
       app.manifest.role !== 'addon' &&
       app.manifest.role !== 'theme' &&
       app.manifest.role !== 'system' &&
-      excludedApps.indexOf(app.manifest.name) === -1);
+      excludedApps.indexOf(app.manifestURL) === -1);
   }
 
   fillAppDetails(app) {
@@ -23,27 +48,14 @@ export default class ListModel extends Model {
     return detail;
   }
 
-  getAppList() {
+  getAppList(allApps) {
     return new Promise((resolve, reject) => {
       var installedApps = Object.create(null);
-      AppsHelper.getAllApps().then(allApps => {
-        var filterList = this.filterApps(allApps);
-        filterList.forEach(app => {
-          installedApps[app.manifestURL] = this.fillAppDetails(app);
-        });
-
-        this.logObject(installedApps);
-        resolve(installedApps);
-      });
+      var filterList = this.filterApps(allApps);
+      filterList.forEach(app =>
+        installedApps[app.manifestURL] = this.fillAppDetails(app));
+      resolve(installedApps);
     });
-  }
-
-  logObject(app) {
-    for (let i in app)
-    {
-      console.log('property & values: ', i + ' : & : ');
-      console.log(app[i]);
-    }
   }
 }
 

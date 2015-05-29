@@ -26,6 +26,8 @@ export default class WebServer {
           return;
         }
       }
+      // Default response for all other requests
+      response.send(null, 404);
     });
   }
 
