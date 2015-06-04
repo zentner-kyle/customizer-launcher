@@ -132,10 +132,18 @@ proto.handleCancel = function(e) {
 };
 
 proto.handleContinue = function(e) {
-  // Invoke Settings activity
+  // Invoke Settings activity to enable developer mode
   // XXX: Bug 1163889
-  window.alert('Open Settings App once Bug 1163889 is resolved. Until then run script' +
-    ' at https://github.com/fxos/lightsaber#enable-developer-mode');
+  var activity = new window.MozActivity({
+    name: 'configure',
+    data: {
+      target: 'device',
+      section: 'full-developer-mode'
+    }
+  });
+  activity.onerror = function() {
+    console.log('Settings configure activity error:', activity.error.name);
+  };
 };
 
 try {
