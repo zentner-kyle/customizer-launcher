@@ -13,6 +13,7 @@
     "gaia-list": "gaia-components/gaia-list#0.1.7",
     "gaia-button": "gaia-components/gaia-button#0.0.4",
     "gaia-fonts": "gaia-components/gaia-fonts#0.2.1",
-    "fxos-web-server": "justindarc/fxos-web-server"
+    "fxos-web-server": "justindarc/fxos-web-server",
+    "fxos-dev-mode-dialog": "fxos/fxos-dev-mode-dialog#0.0.3"
   }
 }

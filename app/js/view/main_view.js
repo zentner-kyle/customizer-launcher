@@ -1,6 +1,6 @@
 import { View } from 'components/fxos-mvc/dist/mvc';
 import 'components/gaia-header/dist/gaia-header';
-import 'js/element/fxos-dev-mode-dialog';
+import 'components/fxos-dev-mode-dialog/fxos-dev-mode-dialog';
 
 export default class MainView extends View {
 
