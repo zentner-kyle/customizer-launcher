@@ -23,6 +23,15 @@ export default class WebServer {
             url === this.lastLaunchedManifestURL){
           response.send('STOP_SERVER_INVOKED');
           this.stopServer();
+          window.dispatchEvent(new CustomEvent('achievement-rewarded', {
+            detail: {
+              criteria: 'achievements/customize-champ',
+              evidence: 'urn:fxos-customizer-launcher:customizer:launched',
+              name: 'Customize Champ',
+              description: 'Open Customizer in an app',
+              image: './img/customize-champ.png'
+            }
+          }));
           return;
         }
       }

@@ -8,6 +8,7 @@
   ],
   "dependencies": {
     "fxos-mvc": "fxos/mvc",
+    "fxos-achievements-service": "fxos/achievements-service",
     "gaia-theme": "gaia-components/gaia-theme#0.4.5",
     "gaia-header" : "gaia-components/gaia-header#0.8.1",
     "gaia-list": "gaia-components/gaia-list#0.1.7",
