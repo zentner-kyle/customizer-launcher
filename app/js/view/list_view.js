@@ -16,10 +16,10 @@ export default class ListView extends View {
   }
 
   update(list) {
-    for (let manifestURL in list) {
-      let data = list[manifestURL];
-      if (!this.elements[manifestURL]) {
-        this.elements[manifestURL] = this.addElement(data);
+    for (let key in list) {
+      let data = list[key];
+      if (!this.elements[key]) {
+        this.elements[key] = this.addElement(data);
       }
     }
   }
