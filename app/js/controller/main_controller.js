@@ -2,9 +2,11 @@ import { Controller } from 'components/fxos-mvc/dist/mvc';
 import 'gaia-component';
 import MainView from 'js/view/main_view';
 import ListController from 'js/controller/list_controller';
+import { AchievementsHelper } from 'js/lib/helpers';
 
 export default class MainController extends Controller {
   constructor() {
+    this.achievementsHelper = new AchievementsHelper();
     this.view = new MainView({ el: document.body });
     this.listController = new ListController();
     super();
