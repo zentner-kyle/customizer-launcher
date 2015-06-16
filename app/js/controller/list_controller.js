@@ -53,6 +53,11 @@ export default class ListController extends Controller {
   }
 
   launchApp(data) {
+    // Use entry_point to launch app, if entry_point exists
+    if (data.entry_point) {
+      data.app.launch(data.entry_point);
+    } else {
       data.app.launch();
+    }
   }
 }
